@@ -1,6 +1,6 @@
 {
   "name": "@enymo/react-clickable-router",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unified component for links and buttons. This version integrates with react-router",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
