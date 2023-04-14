@@ -6,7 +6,7 @@ export interface ClickableProps {
     className?: string,
     style?: CSSProperties,
     to?: string,
-    onClick?: () => void | Promise<void>,
+    onClick?: (e: React.MouseEvent) => void | Promise<void>,
     linkType?: "normal" | "no-router" | "new-tab",
     disabled?: boolean,
     submit?: boolean,
