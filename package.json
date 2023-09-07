@@ -1,7 +1,7 @@
 {
-  "name": "@enymo-internal/react-clickable-router",
-  "version": "1.0.2",
-  "description": "Unified component for links and buttons. This version integrates with react-router",
+  "name": "@enymo/react-clickable-router",
+  "version": "0.0.0",
+  "description": "Simple React Component providing a unified API for working with Buttons, Anchors and React Router Links.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -23,10 +23,7 @@
     "url": "https://gitlab.internal.enymo.com/enymo/library/react-clickable-router.git"
   },
   "author": "enymo GmbH",
-  "license": "UNLICENSED",
-  "publishConfig": {
-    "@enymo-internal:registry": "https://gitlab.internal.enymo.com/api/v4/projects/70/packages/npm/"
-  },
+  "license": "MIT",
   "devDependencies": {
     "@types/react": "^18.0.28",
     "postcss": "^8.4.17",
