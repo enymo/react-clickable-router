@@ -23,16 +23,8 @@ export function Clickable({
     submit = false,
     children
 }: ClickableProps) {
-    if (to) {
-        if (disabled) {
-            return (
-                <div
-                    className={classNames(className, "disabled")}
-                    style={style}
-                >{children}</div>
-            )
-        }
-        else if (linkType !== "normal") {
+    if (to && !disabled) {
+        if (linkType !== "normal") {
             return (
                 <a
                     href={to}
@@ -57,7 +49,7 @@ export function Clickable({
             )
         }
     }
-    else {
+    else if (onClick) {
         return (
             <button
                 onClick={onClick}
@@ -66,6 +58,14 @@ export function Clickable({
                 style={style}
                 type={submit ? "submit" : "button"}
             >{children}</button>
+        )
+    }
+    else {
+        return (
+            <div
+                className={classNames(className, {disabled})}
+                style={style}
+            >{children}</div>
         )
     }
 }
