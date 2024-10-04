@@ -1,27 +1,25 @@
 import classNames from "classnames";
-import React, { CSSProperties } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, LinkProps } from "react-router-dom";
 
-export interface ClickableProps {
-    className?: string,
-    style?: CSSProperties,
-    to?: string,
-    onClick?: (e: React.MouseEvent) => void | Promise<void>,
-    linkType?: "normal" | "no-router" | "new-tab",
-    disabled?: boolean,
-    submit?: boolean,
-    children: React.ReactNode
-}
+export type ClickableProps = 
+    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "type">
+    & React.HTMLAttributes<HTMLDivElement>
+    & Omit<LinkProps, "type" | "to" | "target" | "referrerPolicy">
+    & {
+        to?: string,
+        linkType?: "normal" | "no-router" | "new-tab",
+        submit?: boolean
+    }
 
 export function Clickable({
     className,
-    style,
     to,
     onClick,
     linkType = "normal",
     disabled = false,
     submit = false,
-    children
+    ...props
 }: ClickableProps) {
     if (to && !disabled) {
         if (linkType !== "normal") {
@@ -30,12 +28,12 @@ export function Clickable({
                     href={to}
                     onClick={onClick}
                     className={className}
-                    style={style}
                     {...(linkType === "new-tab" ? {
                         target: "_blank",
                         referrerPolicy: "no-referrer"
                     } : {})}
-                >{children}</a>
+                    {...props}
+                />
             )
         }
         else {
@@ -44,8 +42,8 @@ export function Clickable({
                     to={to}
                     onClick={onClick}
                     className={className}
-                    style={style}
-                >{children}</Link>
+                    {...props}
+                />
             )
         }
     }
@@ -55,17 +53,17 @@ export function Clickable({
                 onClick={onClick}
                 className={classNames(className, {disabled})}
                 disabled={disabled}
-                style={style}
                 type={submit ? "submit" : "button"}
-            >{children}</button>
+                {...props}
+            />
         )
     }
     else {
         return (
             <div
                 className={classNames(className, {disabled})}
-                style={style}
-            >{children}</div>
+                {...props}
+            />
         )
     }
 }
