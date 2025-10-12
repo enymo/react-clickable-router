@@ -1,10 +1,10 @@
 import classNames from "classnames";
-import React from "react";
+import { ButtonHTMLAttributes, HTMLAttributes } from "react";
 import { Link, LinkProps } from "react-router";
 
 export type ClickableProps = 
-    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "type">
-    & React.HTMLAttributes<HTMLDivElement>
+    Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type">
+    & HTMLAttributes<HTMLDivElement>
     & Omit<LinkProps, "type" | "to" | "target" | "referrerPolicy">
     & {
         to?: string,
