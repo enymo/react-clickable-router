@@ -2,10 +2,23 @@
   "name": "@enymo/react-clickable-router",
   "version": "3.0.1",
   "description": "Simple React Component providing a unified API for working with Buttons, Anchors and React Router Links.",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "tsup": {
+  "types": "dist/index.d.cts",
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./dist/index.d.mts",
+        "require": "./dist/index.d.cts"
+      },
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "/dist"
+  ],
+  "tsdown": {
     "entry": [
       "src/js/index.tsx"
     ],
@@ -16,7 +29,7 @@
     "dts": true
   },
   "scripts": {
-    "build": "tsup"
+    "build": "tsdown"
   },
   "repository": {
     "type": "git",
@@ -27,14 +40,17 @@
   "devDependencies": {
     "@types/react": "^18.0.28",
     "postcss": "^8.4.17",
-    "tsup": "^6.2.2",
-    "typescript": "^4.7.4"
+    "typescript": "^7.0.2"
   },
   "dependencies": {
-    "classnames": "^2.3.2"
+    "classnames": "^2.3.2",
+    "tsdown": "^0.22.14"
   },
   "peerDependencies": {
-    "react": ">=17.0.0",
-    "react-router": "^7.0.1"
+    "react": ">=19.0.0",
+    "react-router": "^8.3.0"
+  },
+  "allowScripts": {
+    "esbuild@0.17.19": true
   }
 }
